@@ -1,0 +1,34 @@
+<div class="bg-blue h-screen w-max py-10 flex flex-col justify-start">
+  <button class="self-end mr-10" (click)="isExpanded = !isExpanded">
+    <span class="material-icons-outlined">
+      {{ isExpanded ? 'arrow_back_ios' : 'arrow_forward_ios' }}
+    </span>
+  </button>
+  <div class="mt-10 self-center rounded-full border-2" [ngClass]="{'h-24 w-24': isExpanded, 'h-16 w-16': !isExpanded}">
+    <img
+      src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"      alt="profile picture"
+      class="bg-cover bg-center w-full h-full rounded-full">
+    <p class="mx-auto mt-3 text-center" *ngIf="isExpanded">alpen_glow21</p>
+  </div>
+  <ul class="mt-20 text-gray-400">
+    <li class="py-5 px-10 cursor-pointer flex" [routerLink]="appUrls.DASHBOARD" routerLinkActive="text-black">
+      <span class="material-icons-outlined mr-2">
+        home
+      </span>
+      <span *ngIf="isExpanded">Dashboard</span>
+    </li>
+    <li class="py-5 px-10 cursor-pointer flex" [routerLink]="appUrls.MY_COURSES" routerLinkActive="text-black">
+      <span class="material-icons-outlined mr-2">
+        description
+      </span>
+      <span *ngIf="isExpanded">Your Courses</span>
+    </li>
+    <li class="py-5 px-10 cursor-pointer flex" [routerLink]="appUrls.BROWSE_TOPICS" routerLinkActive="text-black">
+      <span class="material-icons-outlined mr-2">
+        travel_explore
+      </span>
+      <span *ngIf="isExpanded">Browse Topics</span>
+    </li>
+  </ul>
+</div>
+

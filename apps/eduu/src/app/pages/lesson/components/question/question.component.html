@@ -1,0 +1,16 @@
+<div class="bg-white w-full rounded-2xl py-4 px-6 shadow-lg mb-4">
+  <div class="flex justify-between items-center">
+    <p class="font-semibold">{{question}}</p>
+    <div class="flex justify-center items-center">
+      <div class="text-center">{{answers.length}} <br>answers</div>
+      <div class="border-l h-12 mx-3"></div>
+      <app-button type="outlined" (click)="showAnswers = !showAnswers">show answers</app-button>
+    </div>
+  </div>
+  <div *ngIf="showAnswers" class="mt-2">
+    <div *ngFor="let answer of answers" class="flex justify-between border-t py-4">
+      <p>{{answer.text}}</p>
+      <div>{{answer.rating}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="border-0 w-full h-auto rounded-3xl bg-white flex justify-center items-center">
+  <div *ngIf="safeUrl.changingThisBreaksApplicationSecurity !== ''; else noVideo" class="w-full h-0 relative padding-56">
+    <iframe
+      class="border-0 rounded-3xl absolute w-full h-full top-0 right-0 bottom-0 left-0"
+      [src]="safeUrl"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      rel=0
+      width="560"
+      height="349"
+      allowfullscreen
+      title="video">
+    </iframe>
+  </div>
+  <ng-template #noVideo>
+    <div class="h-fit-content flex items-center flex-col">
+      <app-button type="fab"><span class="material-icons-outlined">add</span></app-button>
+      <span>There is currently no video available. Be the first one to suggest one!</span>
+    </div>
+  </ng-template>
+</div>
+<div class="w-full py-5 flex justify-between">
+  <div>Additional information</div>
+  <div class="flex flex-col justify-center content-center">
+    <span class="material-icons-outlined text-4xl cursor-pointer hover:text-green" (click)="voteUp()">expand_less</span>
+    <span class="text-center">{{rating}}</span>
+    <span class="material-icons-outlined text-4xl cursor-pointer hover:text-red" (click)="voteDown()">expand_more</span>
+  </div>
+</div>

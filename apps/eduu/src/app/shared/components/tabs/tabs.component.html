@@ -1,0 +1,6 @@
+<ul class="flex flex-row">
+  <li class="p-2 w-40 flex justify-center items-center cursor-pointer" [ngClass]="{'active' : tab.active === true}" (click)="selectTab(tab)" *ngFor="let tab of tabs">{{tab.tabTitle}}</li>
+</ul>
+<div class="py-4">
+  <ng-content></ng-content>
+</div>

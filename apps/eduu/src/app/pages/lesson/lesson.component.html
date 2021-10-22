@@ -1,0 +1,18 @@
+<h1>Lesson | id: 1298</h1>
+<app-video url="https://www.youtube.com/embed/cH62pseYi_I" [rating]="56"></app-video>
+<app-tabs>
+  <app-tab tabTitle="Script">
+    <div class="w-full h-screen">
+      <embed src="assets/Grundlagen%20der%20Elektrotechnik%20in%20der%20HF_Vorlesungsunterlagen.pdf" class="h-full w-full">
+    </div>
+  </app-tab>
+  <app-tab tabTitle="Q&A">
+    <div class="mb-4 ml-auto mr-0 w-min">
+      <app-button type="contained"><span class="material-icons-outlined">add</span> Add Question</app-button>
+    </div>
+    <ng-container *ngFor="let i of [1, 2, 3]">
+      <app-question></app-question>
+    </ng-container>
+  </app-tab>
+  <app-tab tabTitle="Weitere Ressourcen"><p>hello</p></app-tab>
+</app-tabs>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@eduu/api-interfaces';
+import { Message } from '../../../../libs/api-interfaces/src';
 
 @Component({
   selector: 'eduu-root',

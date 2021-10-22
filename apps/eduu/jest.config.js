@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'eduu',
+  displayName: 'eduu-learning',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/eduu',
+  coverageDirectory: '../../coverage/apps/eduu-learning',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
