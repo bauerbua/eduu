@@ -4,7 +4,7 @@ export const appUrls = {
   PROFILE: 'profile',
   MY_COURSES: 'my-courses',
   LESSON: 'lesson',
-  AUTHENTICATION: 'auth',
+  AUTHENTICATION: 'authentication',
   LOGIN: 'login',
   FORGOT_PASSWORD: 'forgot-password',
   RESET_PASSWORD: 'reset-password'
