@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '../../../../libs/api-interfaces/src';
 
 @Component({
   selector: 'eduu-root',
@@ -8,6 +6,4 @@ import { Message } from '../../../../libs/api-interfaces/src';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
 }
