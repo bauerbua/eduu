@@ -50,14 +50,37 @@
         }
       }
     },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/data/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data"],
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "eduu": {
       "projectType": "application",
       "root": "apps/eduu",
       "sourceRoot": "apps/eduu/src",
-      "prefix": "eduu",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@nrwl/web:build",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/eduu",
             "index": "apps/eduu/src/index.html",
@@ -98,7 +121,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@nrwl/web:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "eduu:build:production"
@@ -109,7 +132,8 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "apps/eduu/proxy.conf.json"
+            "proxyConfig": "apps/eduu/proxy.conf.json",
+            "browserTarget": "eduu:build:development"
           }
         },
         "lint": {
@@ -156,6 +180,29 @@
           }
         }
       }
+    },
+    "types": {
+      "root": "libs/types",
+      "sourceRoot": "libs/types/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/types/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/types"],
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     }
   }
 }

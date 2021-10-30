@@ -18,7 +18,7 @@ export class SignInComponent implements OnDestroy {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signInForm = fb.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
     })
   }
@@ -27,8 +27,8 @@ export class SignInComponent implements OnDestroy {
     this.subscriptions.add(
       this.authService.signIn(this.signInForm.value).subscribe(
       (res: User) => {
-        // ToDo: store user role in state
-        localStorage.setItem('user', JSON.stringify({username: res.username, id: res.id, role: res.role}));
+        // ToDo: store user in state && extract access-token
+        console.log(res);
         this.router.navigate([appUrls.DASHBOARD]);
       })
     );
