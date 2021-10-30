@@ -65,10 +65,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       switch (true) {
         case url.endsWith(apiEndpoints.LESSON) && method === 'GET':
           return getLessonById(request.body.id);
-        case url.endsWith('/users/register') && method === 'POST':
-          return register();
-        case url.endsWith(apiEndpoints.LOGIN) && method === 'POST':
-          return authenticateUser()
         case url.endsWith(apiEndpoints.RESET_PASSWORD_LINK) && method === 'POST':
           return sendResetPasswordCode()
         case url.endsWith(apiEndpoints.VERIFY_RESET_CODE) && method === 'POST':

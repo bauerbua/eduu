@@ -8,7 +8,6 @@
       "architect": {
         "build": {
           "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
@@ -37,32 +36,38 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
           "options": {
+            "outputPath": "coverage/apps/api",
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
           }
         }
-      },
-      "tags": []
+      }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
       "projectType": "library",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+            "lintFilePatterns": ["libs/data/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data"],
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "passWithNoTests": true
           }
         }
       },
@@ -72,15 +77,11 @@
       "projectType": "application",
       "root": "apps/eduu",
       "sourceRoot": "apps/eduu/src",
-      "prefix": "eduu",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "outputs": ["{options.outputPath}"],
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "customWebpackConfig": {
-              "path": "./tailwind.config.js"
-            },
             "outputPath": "dist/apps/eduu",
             "index": "apps/eduu/src/index.html",
             "main": "apps/eduu/src/main.ts",
@@ -98,11 +99,6 @@
                   "type": "initial",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [
@@ -125,7 +121,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "eduu:build:production"
@@ -136,16 +132,8 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "customWebpackConfig": {
-              "path": "./tailwind.config.js"
-            },
-            "proxyConfig": "apps/eduu/proxy.conf.json"
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "eduu:build"
+            "proxyConfig": "apps/eduu/proxy.conf.json",
+            "browserTarget": "eduu:build:development"
           }
         },
         "lint": {
@@ -159,14 +147,13 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/eduu"],
           "options": {
+            "outputPath": "coverage/apps/eduu",
             "jestConfig": "apps/eduu/jest.config.js",
             "passWithNoTests": true
           }
         }
-      },
-      "tags": []
+      }
     },
     "eduu-e2e": {
       "root": "apps/eduu-e2e",
@@ -188,14 +175,34 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/eduu-e2e/**/*.{js,ts}"]
           }
         }
+      }
+    },
+    "types": {
+      "root": "libs/types",
+      "sourceRoot": "libs/types/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/types/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/types"],
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
       },
-      "tags": [],
-      "implicitDependencies": ["eduu"]
+      "tags": []
     }
   }
 }
